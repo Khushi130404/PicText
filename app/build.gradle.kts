@@ -29,6 +29,8 @@ android {
 }
 
 dependencies {
+    implementation("com.google.android.gms:play-services-vision:20.0.0")
+//    implementation("com.theartofdev.edmodo:android-image-cropper:2.8.1")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -36,7 +38,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-    implementation(libs.play.services.vision)
-    implementation(libs.image.cropper)
 }
