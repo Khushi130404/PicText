@@ -29,7 +29,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class PicTextActivity extends Activity {
-    Button btCamera,btGallery,btRetake;
+    Button btCamera,btGallery,btRetake,btCopy;
     TextView tvImageText;
     Bitmap imageBitmap;
     private static final int REQUEST_CODE_CAMERA = 100;
@@ -44,6 +44,7 @@ public class PicTextActivity extends Activity {
         btGallery = findViewById(R.id.btGallery);
         btRetake = findViewById(R.id.btRetake);
         tvImageText = findViewById(R.id.tvImageText);
+        btCopy = findViewById(R.id.btCopy);
 
         imageBitmap = null;
 
@@ -90,6 +91,14 @@ public class PicTextActivity extends Activity {
                 }
             }
         });
+
+        btCopy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyToClipboard(tvImageText.getText().toString());
+            }
+        });
+
     }
 
     public void onActivityResult(int reqCode, int resCode, Intent data)
