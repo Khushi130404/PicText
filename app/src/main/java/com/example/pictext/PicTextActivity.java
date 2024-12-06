@@ -1,5 +1,6 @@
 package com.example.pictext;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -24,7 +25,9 @@ import androidx.core.content.ContextCompat;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+import com.yalantis.ucrop.UCrop;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
@@ -48,10 +51,10 @@ public class PicTextActivity extends Activity {
 
         imageBitmap = null;
 
-        if(ContextCompat.checkSelfPermission(PicTextActivity.this,android.Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
+        if(ContextCompat.checkSelfPermission(PicTextActivity.this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(PicTextActivity.this, new String[]{
-                    android.Manifest.permission.CAMERA
+                    Manifest.permission.CAMERA
             },REQUEST_CODE_CAMERA);
         }
 
@@ -111,6 +114,12 @@ public class PicTextActivity extends Activity {
         else if(reqCode==111 && resCode==RESULT_OK)
         {
             Uri imageUri = data.getData();
+//            Uri uri = data.getData();
+//            Uri imageUri = Uri.fromFile(new File(getCacheDir(), "cropped_image.jpg"));
+//            UCrop.of(uri, imageUri)
+//                    .withAspectRatio(16, 9)
+//                    .withMaxResultSize(800, 800)
+//                    .start(PicTextActivity.this);
 
             try
             {
