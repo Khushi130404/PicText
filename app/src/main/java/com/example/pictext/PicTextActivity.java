@@ -28,6 +28,7 @@ import java.io.InputStream;
 public class PicTextActivity extends Activity {
     Button btCamera,btGallery,btRetake;
     TextView tvImageText;
+    Bitmap imageBitmap;
     private static final int REQUEST_CODE_CAMERA = 100;
     private static final int IMAGE_CROP_REQUEST_CODE = 1001;
 
@@ -40,6 +41,8 @@ public class PicTextActivity extends Activity {
         btGallery = findViewById(R.id.btGallery);
         btRetake = findViewById(R.id.btRetake);
         tvImageText = findViewById(R.id.tvImageText);
+
+        imageBitmap = null;
 
         if(ContextCompat.checkSelfPermission(PicTextActivity.this,android.Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
         {
@@ -66,11 +69,28 @@ public class PicTextActivity extends Activity {
                 }
             }
         });
+
+        btRetake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(imageBitmap!=null)
+                {
+                    tvImageText.setText(" ");
+                    tvImageText.postDelayed(() -> {
+                        getTextFromImage(imageBitmap);
+                        Toast.makeText(getApplicationContext(), "Retaken text", Toast.LENGTH_LONG).show();
+                    }, 800);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"No image for retake..!",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public void onActivityResult(int reqCode, int resCode, Intent data)
     {
-        Bitmap imageBitmap = null;
         if(reqCode==101 && resCode==RESULT_OK)
         {
             Bundle extras = data.getExtras();
@@ -94,7 +114,10 @@ public class PicTextActivity extends Activity {
         if(resCode==RESULT_OK)
         {
             getTextFromImage(imageBitmap);
-            Toast.makeText(getApplicationContext(),"Got the image",Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Error getting the image",Toast.LENGTH_LONG).show();
         }
     }
 

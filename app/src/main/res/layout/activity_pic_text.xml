@@ -54,7 +54,7 @@
 
         <Button
             android:id="@+id/btCamera"
-            android:text="Retake"
+            android:text="Camera"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
