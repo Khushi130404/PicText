@@ -8,7 +8,7 @@
         ></gradient>
 
     <corners
-        android:radius="50dp"
+        android:radius="30dp"
         ></corners>
 
     <stroke
