@@ -16,7 +16,7 @@
         android:textStyle="bold|italic"
         android:textFontWeight="900"
         android:textColor="#5A1A32"
-        android:textSize="30dp"
+        android:textSize="35dp"
         android:fontFamily="sans-serif-medium"
         android:textAlignment="center"
         android:layout_width="match_parent"
@@ -47,31 +47,31 @@
 
         <Button
             android:id="@+id/btGallery"
-            android:text="Capture"
             android:layout_width="0dp"
+            android:background="@drawable/gallery"
             android:layout_height="match_parent"
             android:layout_weight="1"
             ></Button>
 
         <Button
             android:id="@+id/btCamera"
-            android:text="Camera"
+            android:background="@drawable/camera"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             ></Button>
 
         <Button
-            android:text="Retry"
             android:id="@+id/btRetake"
+            android:background="@drawable/retry"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
         </Button>
 
         <Button
-            android:text="Copy"
             android:id="@+id/btCopy"
+            android:background="@drawable/copy"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
