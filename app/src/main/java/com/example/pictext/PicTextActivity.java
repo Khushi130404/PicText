@@ -1,7 +1,10 @@
 package com.example.pictext;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -26,7 +29,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class PicTextActivity extends Activity {
-    Button btCamera,btGallery,btRetake;
+    Button btCamera,btGallery,btRetake,btCopy;
     TextView tvImageText;
     Bitmap imageBitmap;
     private static final int REQUEST_CODE_CAMERA = 100;
@@ -41,6 +44,7 @@ public class PicTextActivity extends Activity {
         btGallery = findViewById(R.id.btGallery);
         btRetake = findViewById(R.id.btRetake);
         tvImageText = findViewById(R.id.tvImageText);
+        btCopy = findViewById(R.id.btCopy);
 
         imageBitmap = null;
 
@@ -87,6 +91,14 @@ public class PicTextActivity extends Activity {
                 }
             }
         });
+
+        btCopy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyToClipboard(tvImageText.getText().toString());
+            }
+        });
+
     }
 
     public void onActivityResult(int reqCode, int resCode, Intent data)
@@ -117,7 +129,7 @@ public class PicTextActivity extends Activity {
         }
         else
         {
-            Toast.makeText(getApplicationContext(),"Error getting the image",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Error getting the image",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -126,7 +138,7 @@ public class PicTextActivity extends Activity {
         TextRecognizer recognizer = new TextRecognizer.Builder(this).build();
         if(!recognizer.isOperational())
         {
-            Toast.makeText(getApplicationContext(),"Error...!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Error...!",Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -141,6 +153,14 @@ public class PicTextActivity extends Activity {
             }
             tvImageText.setText(stringBuilder.toString());
         }
+    }
+
+    private void copyToClipboard(String text)
+    {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("Copied Data",text);
+        clipboardManager.setPrimaryClip(clipData);
+        Toast.makeText(getApplicationContext(),"Text Copied to Clipboard",Toast.LENGTH_SHORT).show();
     }
 
 }
