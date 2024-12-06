@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
-    android:weightSum="6"
+    android:weightSum="7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PicTextActivity">
@@ -29,6 +29,13 @@
 
     </ScrollView>
 
+    <Button
+        android:text="Retake"
+        android:id="@+id/btRetake"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></Button>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -38,7 +45,7 @@
         >
 
         <Button
-            android:id="@+id/btCapture"
+            android:id="@+id/btGallery"
             android:text="Capture"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -46,7 +53,7 @@
             ></Button>
 
         <Button
-            android:id="@+id/btRetake"
+            android:id="@+id/btCamera"
             android:text="Retake"
             android:layout_width="0dp"
             android:layout_height="match_parent"

@@ -26,7 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class PicTextActivity extends Activity {
-    Button btCapture,btRetake;
+    Button btCamera,btGallery,btRetake;
     TextView tvImageText;
     private static final int REQUEST_CODE_CAMERA = 100;
     private static final int IMAGE_CROP_REQUEST_CODE = 1001;
@@ -36,7 +36,8 @@ public class PicTextActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pic_text);
 
-        btCapture = findViewById(R.id.btCapture);
+        btCamera = findViewById(R.id.btCamera);
+        btGallery = findViewById(R.id.btGallery);
         btRetake = findViewById(R.id.btRetake);
         tvImageText = findViewById(R.id.tvImageText);
 
@@ -47,20 +48,24 @@ public class PicTextActivity extends Activity {
             },REQUEST_CODE_CAMERA);
         }
 
-        btCapture.setOnClickListener(new View.OnClickListener() {
+        btGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                 startActivityForResult(gallery,111);
-
-//                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                if (takePictureIntent.resolveActivity(getPackageManager()) != null)
-//                {
-//                    startActivityForResult(takePictureIntent, 101);
-//                }
             }
         });
 
+        btCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null)
+                {
+                    startActivityForResult(takePictureIntent, 101);
+                }
+            }
+        });
     }
 
     public void onActivityResult(int reqCode, int resCode, Intent data)
