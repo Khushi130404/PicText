@@ -26,8 +26,9 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class PicTextActivity extends Activity {
-    Button btCapture,btRetake;
+    Button btCamera,btGallery,btRetake;
     TextView tvImageText;
+    Bitmap imageBitmap;
     private static final int REQUEST_CODE_CAMERA = 100;
     private static final int IMAGE_CROP_REQUEST_CODE = 1001;
 
@@ -36,9 +37,12 @@ public class PicTextActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pic_text);
 
-        btCapture = findViewById(R.id.btCapture);
+        btCamera = findViewById(R.id.btCamera);
+        btGallery = findViewById(R.id.btGallery);
         btRetake = findViewById(R.id.btRetake);
         tvImageText = findViewById(R.id.tvImageText);
+
+        imageBitmap = null;
 
         if(ContextCompat.checkSelfPermission(PicTextActivity.this,android.Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
         {
@@ -47,25 +51,46 @@ public class PicTextActivity extends Activity {
             },REQUEST_CODE_CAMERA);
         }
 
-        btCapture.setOnClickListener(new View.OnClickListener() {
+        btGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                 startActivityForResult(gallery,111);
-
-//                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                if (takePictureIntent.resolveActivity(getPackageManager()) != null)
-//                {
-//                    startActivityForResult(takePictureIntent, 101);
-//                }
             }
         });
 
+        btCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null)
+                {
+                    startActivityForResult(takePictureIntent, 101);
+                }
+            }
+        });
+
+        btRetake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(imageBitmap!=null)
+                {
+                    tvImageText.setText(" ");
+                    tvImageText.postDelayed(() -> {
+                        getTextFromImage(imageBitmap);
+                        Toast.makeText(getApplicationContext(), "Retaken text", Toast.LENGTH_LONG).show();
+                    }, 800);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"No image for retake..!",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public void onActivityResult(int reqCode, int resCode, Intent data)
     {
-        Bitmap imageBitmap = null;
         if(reqCode==101 && resCode==RESULT_OK)
         {
             Bundle extras = data.getExtras();
@@ -89,7 +114,10 @@ public class PicTextActivity extends Activity {
         if(resCode==RESULT_OK)
         {
             getTextFromImage(imageBitmap);
-            Toast.makeText(getApplicationContext(),"Got the image",Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Error getting the image",Toast.LENGTH_LONG).show();
         }
     }
 
