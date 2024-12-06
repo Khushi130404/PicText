@@ -4,13 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
-    android:weightSum="6"
+    android:weightSum="7"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PicTextActivity">
 
     <TextView
         android:text="PicText"
+        android:gravity="center"
+        android:textStyle="bold|italic"
+        android:textFontWeight="900"
+        android:textColor="#5A1A32"
+        android:textSize="25dp"
+        android:fontFamily="sans-serif-medium"
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -20,7 +27,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4">
+        android:layout_weight="5">
 
         <TextView
             android:id="@+id/tvImageText"
