@@ -29,16 +29,17 @@
 
     </ScrollView>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:weightSum="2"
+        android:weightSum="4"
         >
 
         <Button
-            android:id="@+id/btCapture"
+            android:id="@+id/btGallery"
             android:text="Capture"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -46,12 +47,28 @@
             ></Button>
 
         <Button
-            android:id="@+id/btRetake"
-            android:text="Retake"
+            android:id="@+id/btCamera"
+            android:text="Camera"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             ></Button>
+
+        <Button
+            android:text="Retry"
+            android:id="@+id/btRetake"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </Button>
+
+        <Button
+            android:text="Copy"
+            android:id="@+id/btCopy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </Button>
 
     </LinearLayout>
 
