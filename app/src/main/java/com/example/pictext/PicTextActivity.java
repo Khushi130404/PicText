@@ -1,7 +1,10 @@
 package com.example.pictext;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -117,7 +120,7 @@ public class PicTextActivity extends Activity {
         }
         else
         {
-            Toast.makeText(getApplicationContext(),"Error getting the image",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Error getting the image",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -126,7 +129,7 @@ public class PicTextActivity extends Activity {
         TextRecognizer recognizer = new TextRecognizer.Builder(this).build();
         if(!recognizer.isOperational())
         {
-            Toast.makeText(getApplicationContext(),"Error...!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Error...!",Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -141,6 +144,14 @@ public class PicTextActivity extends Activity {
             }
             tvImageText.setText(stringBuilder.toString());
         }
+    }
+
+    private void copyToClipboard(String text)
+    {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("Copied Data",text);
+        clipboardManager.setPrimaryClip(clipData);
+        Toast.makeText(getApplicationContext(),"Text Copied to Clipboard",Toast.LENGTH_SHORT).show();
     }
 
 }
