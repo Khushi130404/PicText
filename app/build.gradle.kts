@@ -29,8 +29,8 @@ android {
 }
 
 dependencies {
-    implementation("com.google.android.gms:play-services-vision:20.0.0")
-//    implementation("com.theartofdev.edmodo:android-image-cropper:2.8.1")
+    implementation("com.google.android.gms:play-services-vision:20.1.3")
+    implementation("com.github.Yalantis:ucrop:2.2.6")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
