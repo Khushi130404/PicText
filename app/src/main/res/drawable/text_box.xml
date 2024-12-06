@@ -11,9 +11,4 @@
         android:radius="30dp"
         ></corners>
 
-<!--    <stroke-->
-<!--        android:width="3dp"-->
-<!--        android:color="@color/cherry"-->
-<!--        ></stroke>-->
-
 </shape>

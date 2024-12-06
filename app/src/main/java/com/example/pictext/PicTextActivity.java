@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BlurMaskFilter;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class PicTextActivity extends Activity {
         paint.setMaskFilter(new BlurMaskFilter(50, BlurMaskFilter.Blur.SOLID));
         scrollView.setLayerType(View.LAYER_TYPE_SOFTWARE, paint);
 
+        tvImageText.setBackgroundColor(Color.TRANSPARENT);
 
         imageBitmap = null;
 
