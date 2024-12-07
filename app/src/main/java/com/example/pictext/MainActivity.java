@@ -19,6 +19,6 @@ public class MainActivity extends Activity {
 
         Intent i = new Intent(getApplicationContext(), PicTextActivity.class);
         startActivity(i);
-        finish();
+
     }
 }
