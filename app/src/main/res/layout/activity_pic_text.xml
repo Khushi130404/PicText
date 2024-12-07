@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:orientation="vertical"
     android:weightSum="8"
-    android:background="@drawable/pic"
+    android:background="@drawable/img_3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PicTextActivity">
@@ -43,7 +43,6 @@
             android:id="@+id/tvImageText"
             android:editable="false"
             android:textSize="15dp"
-            android:textStyle="italic"
             android:textColor="#916B6B"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></EditText>
