@@ -22,7 +22,7 @@
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.95"
+        android:layout_weight="0.9"
         ></TextView>
 
     <ScrollView
@@ -35,17 +35,14 @@
         android:padding="20dp"
         android:paddingTop="30dp"
         android:paddingBottom="30dp"
-        android:scrollbars="none"
         android:layout_marginRight="30dp"
         android:layout_weight="6">
 
-        <EditText
+        <TextView
             android:id="@+id/tvImageText"
-            android:editable="false"
-            android:textSize="15dp"
-            android:textColor="#916B6B"
+            android:textColor="@color/cherry"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></EditText>
+            android:layout_height="match_parent"></TextView>
 
     </ScrollView>
 
@@ -53,10 +50,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.9"
+        android:layout_weight="0.95"
         android:alpha="0.8"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:orientation="horizontal"
         android:weightSum="4"
         >
