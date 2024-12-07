@@ -15,7 +15,6 @@
         android:gravity="center"
         android:textStyle="bold|italic"
         android:textFontWeight="1600"
-        android:layout_marginTop="5dp"
         android:textColor="@color/cherry"
         android:textSize="40dp"
         android:fontFamily="sans-serif-medium"
@@ -30,16 +29,12 @@
         android:layout_height="0dp"
         android:layout_marginLeft="30dp"
         android:background="@drawable/text_box"
-        android:layout_marginBottom="10dp"
-        android:padding="20dp"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginRight="30dp"
         android:layout_weight="6">
 
         <TextView
             android:id="@+id/tvImageText"
-            android:textColor="@color/cherry"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></TextView>
 
